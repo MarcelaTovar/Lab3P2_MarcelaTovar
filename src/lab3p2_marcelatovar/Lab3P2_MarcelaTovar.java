@@ -208,6 +208,46 @@ public class Lab3P2_MarcelaTovar {
                         }
                     }else if(cantidadLlantas == 4){
                         System.out.println("1. Carro 2. Camion 3. Bus");
+                        int o = leer.nextInt();
+                        switch(o){
+                            case 1 ->{
+                                Carro car = new Carro();
+                                car.setColor(color);
+                                car.setMarca(marca);
+                                car.setAnio(anio);
+                                car.setPrecio(precio);
+                                car.setCantidadLlantas(cantidadLlantas);
+                                System.out.println("Ingrese la cantidad de puertas: ");
+                                int cantidadPuertas = leer.nextInt();
+                                car.setCantidadPuertas(cantidadPuertas);
+                                System.out.println("Ingrese la descripcion del motor: ");
+                                String descripcionMotor = leer.nextLine();
+                                car.setDescripcionMotor(descripcionMotor);
+                                System.out.println("Ingrese la velocidad maxima: ");
+                                int v = leer.nextInt();
+                                car.setVelocidadMaxima(v);
+                                System.out.println(concesionarias.toString());
+                                System.out.println("Ingrese la concesionaria que desea agregarla: ");
+                                int p = leer.nextInt();
+                                concesionarias.get(p).getVehiculos().add(car);
+                                vehiculos.add(car);
+                                
+                            }
+                            case 2 ->{
+                                Camion cam = new Camion();
+                                cam.setColor(color);
+                                cam.setMarca(marca);
+                                cam.setAnio(anio);
+                                cam.setPrecio(precio);
+                                cam.setCantidadLlantas(cantidadLlantas);
+                                System.out.println("Ingrese el nuevo volumen maximo: ");
+                                int volMax = 
+                                
+                            }
+                            case 3 ->{
+                                
+                            }
+                        }
                     }
                 }
                 case 2 ->{
