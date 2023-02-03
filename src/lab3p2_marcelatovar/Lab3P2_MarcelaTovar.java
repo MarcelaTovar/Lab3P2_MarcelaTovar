@@ -91,11 +91,12 @@ public class Lab3P2_MarcelaTovar {
                     int o = leer.nextInt();
                     switch (o) {
                         case 1 -> {
+                            System.out.println("Ingrese la posicion a cambiar: ");
+                            int pos = leer.nextInt();
                             System.out.println("Ingrese la direccion: ");
                             leer.nextLine();
                             String direccion = leer.nextLine();
-                            c.setDireccion(direccion);
-
+                            concesionarias.get(pos).setDireccion(direccion);
                         }
 
                     }
