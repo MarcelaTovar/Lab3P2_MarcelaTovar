@@ -27,13 +27,32 @@ public class Lab3P2_MarcelaTovar {
                     Concesionaria(concesionarias);
                 }
                 case 2 -> {
-                    Cliente(clientes);
+                    if (concesionarias.isEmpty()) {
+                        System.out.println("Ingrese primero las consecionarias");
+                    }else{
+                        Cliente(clientes);
+                    }
+                    
                 }
                 case 3 -> {
-                    vehiculos(vehiculos, concesionarias);
+                    if (concesionarias.isEmpty()) {
+                        System.out.println("Ingrese primero las consecionarias");
+                    }else{
+                        vehiculos(vehiculos, concesionarias);
+                    }
                 }
                 case 4 -> {
-                    VenderComprar(concesionarias,clientes);
+                    if (concesionarias.isEmpty()) {
+                        System.out.println("Ingrese primero las consecionarias");
+                    }else{
+                        if (vehiculos.isEmpty()) {
+                            System.out.println("Ingrese vehiculos primero");
+                        }else{
+                          VenderComprar(concesionarias,clientes);  
+                        }
+                         
+                    }
+                   
                 }
                 case 5 -> {
                     check = false;
