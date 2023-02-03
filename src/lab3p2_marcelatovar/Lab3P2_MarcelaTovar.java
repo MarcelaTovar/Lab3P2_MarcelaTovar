@@ -64,7 +64,7 @@ public class Lab3P2_MarcelaTovar {
     public static ArrayList<Concesionaria> Concesionaria(ArrayList<Concesionaria> concesionarias) {
         boolean check = true;
         Scanner leer = new Scanner(System.in);
-        Concesionaria c = new Concesionaria();
+        
         do {
             System.out.println("1. Agregar");
             System.out.println("2. Modificar");
@@ -73,6 +73,7 @@ public class Lab3P2_MarcelaTovar {
             int op = leer.nextInt();
             switch (op) {
                 case 1 -> {
+                    Concesionaria c = new Concesionaria();
                     System.out.println("Ingrese el nombre de la empresa: ");
                     String nombre = leer.next();
                     System.out.println("Ingrese la direccion: ");
@@ -120,7 +121,7 @@ public class Lab3P2_MarcelaTovar {
     public static ArrayList<Cliente> Cliente(ArrayList<Cliente> clientes) {
         boolean check = true;
         Scanner leer = new Scanner(System.in);
-        Cliente c = new Cliente();
+        
         do {
             System.out.println("1. Agregar Cliente");
             System.out.println("2. Eliminar");
@@ -128,6 +129,7 @@ public class Lab3P2_MarcelaTovar {
             int o = leer.nextInt();
             switch (o) {
                 case 1 -> {
+                    Cliente c = new Cliente();
                     System.out.println("Ingrese el nombre: ");
                     String nombre = leer.next();
                     System.out.println("Ingrese el saldo: ");
