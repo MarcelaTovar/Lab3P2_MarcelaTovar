@@ -30,12 +30,12 @@ public class Lab3P2_MarcelaTovar {
                     Cliente(clientes);
                 }
                 case 3 -> {
-                    vehiculos(vehiculos,concesionarias);
+                    vehiculos(vehiculos, concesionarias);
                 }
                 case 4 -> {
-                    
+
                 }
-                case 5 ->{
+                case 5 -> {
                     check = false;
                 }
             }
@@ -75,7 +75,7 @@ public class Lab3P2_MarcelaTovar {
                             System.out.println("Ingrese la direccion: ");
                             String direccion = leer.nextLine();
                             c.setDireccion(direccion);
-                            
+
                         }
 
                     }
@@ -95,52 +95,52 @@ public class Lab3P2_MarcelaTovar {
         return concesionarias;
 
     }
-    
-    public static ArrayList<Cliente> Cliente(ArrayList<Cliente> clientes){
+
+    public static ArrayList<Cliente> Cliente(ArrayList<Cliente> clientes) {
         boolean check = true;
         Scanner leer = new Scanner(System.in);
         Cliente c = new Cliente();
-        do{
-            System.out.println("1. Agregar Cliente"); 
+        do {
+            System.out.println("1. Agregar Cliente");
             System.out.println("2. Eliminar");
             System.out.println("3. Salir");
             int o = leer.nextInt();
-            switch(o){
-                case 1 ->{
+            switch (o) {
+                case 1 -> {
                     System.out.println("Ingrese el nombre: ");
                     String nombre = leer.next();
                     System.out.println("Ingrese el saldo: ");
                     int saldo = leer.nextInt();
                     c.setNombre(nombre);
                     c.setSaldo(saldo);
-                    c.setIdUnico(clientes.size()+1);
+                    c.setIdUnico(clientes.size() + 1);
                     clientes.add(c);
                 }
-                case 2 ->{
+                case 2 -> {
                     System.out.println(clientes.toString());
                     System.out.println("Ingrese la pocision a eliminar: ");
                     int p = leer.nextInt();
                     clientes.remove(p);
                 }
-                case 3 ->{
+                case 3 -> {
                     check = false;
                 }
             }
-        }while(check);
+        } while (check);
         return clientes;
     }
-    
-    public static ArrayList<Vehiculo> vehiculos (ArrayList<Vehiculo> vehiculos, ArrayList<Concesionaria> concesionarias){
+
+    public static ArrayList<Vehiculo> vehiculos(ArrayList<Vehiculo> vehiculos, ArrayList<Concesionaria> concesionarias) {
         boolean check = true;
         Scanner leer = new Scanner(System.in);
-        do{
+        do {
             System.out.println("1. Agregar vehiculo");
             System.out.println("2. Modificar Vehiculo");
             System.out.println("3. Eliminar Vehiculo");
             System.out.println("4. Salir");
             int op = leer.nextInt();
-            switch(op){
-                case 1 ->{
+            switch (op) {
+                case 1 -> {
                     System.out.println("Ingrese el color: ");
                     String color = leer.next();
                     System.out.println("Ingrese la marca: ");
@@ -154,8 +154,8 @@ public class Lab3P2_MarcelaTovar {
                     if (cantidadLlantas == 2) {
                         System.out.println("1. Motocicleta 2. Bicicleta");
                         int o = leer.nextInt();
-                        switch(o){
-                            case 1 ->{
+                        switch (o) {
+                            case 1 -> {
                                 Motocicleta moto = new Motocicleta();
                                 moto.setColor(color);
                                 moto.setMarca(marca);
@@ -169,7 +169,7 @@ public class Lab3P2_MarcelaTovar {
                                 String f = leer.next();
                                 if (f.equalsIgnoreCase("S")) {
                                     moto.setElectrica(true);
-                                }else{
+                                } else {
                                     moto.setElectrica(false);
                                 }
                                 System.out.println(concesionarias.toString());
@@ -178,7 +178,7 @@ public class Lab3P2_MarcelaTovar {
                                 concesionarias.get(p).getVehiculos().add(moto);
                                 vehiculos.add(moto);
                             }
-                            case 2 ->{
+                            case 2 -> {
                                 Bicicleta bici = new Bicicleta();
                                 bici.setColor(color);
                                 bici.setMarca(marca);
@@ -195,7 +195,7 @@ public class Lab3P2_MarcelaTovar {
                                 int tipo = leer.nextInt();
                                 if (tipo == 1) {
                                     bici.setTipo("BMW");
-                                }else if(tipo == 2){
+                                } else if (tipo == 2) {
                                     bici.setTipo("De Calle");
                                 }
                                 System.out.println(concesionarias.toString());
@@ -206,11 +206,11 @@ public class Lab3P2_MarcelaTovar {
 
                             }
                         }
-                    }else if(cantidadLlantas == 4){
+                    } else if (cantidadLlantas == 4) {
                         System.out.println("1. Carro 2. Camion 3. Bus");
                         int o = leer.nextInt();
-                        switch(o){
-                            case 1 ->{
+                        switch (o) {
+                            case 1 -> {
                                 Carro car = new Carro();
                                 car.setColor(color);
                                 car.setMarca(marca);
@@ -231,9 +231,9 @@ public class Lab3P2_MarcelaTovar {
                                 int p = leer.nextInt();
                                 concesionarias.get(p).getVehiculos().add(car);
                                 vehiculos.add(car);
-                                
+
                             }
-                            case 2 ->{
+                            case 2 -> {
                                 Camion cam = new Camion();
                                 cam.setColor(color);
                                 cam.setMarca(marca);
@@ -250,7 +250,7 @@ public class Lab3P2_MarcelaTovar {
                                 int w = leer.nextInt();
                                 if (w == 1) {
                                     cam.setRetroexcavadora(true);
-                                }else if(w == 2){
+                                } else if (w == 2) {
                                     cam.setRetroexcavadora(false);
                                 }
                                 System.out.println(concesionarias.toString());
@@ -258,9 +258,9 @@ public class Lab3P2_MarcelaTovar {
                                 int p = leer.nextInt();
                                 concesionarias.get(p).getVehiculos().add(cam);
                                 vehiculos.add(cam);
-                                
+
                             }
-                            case 3 ->{
+                            case 3 -> {
                                 Bus b = new Bus();
                                 b.setColor(color);
                                 b.setMarca(marca);
@@ -275,22 +275,84 @@ public class Lab3P2_MarcelaTovar {
                                 int p = leer.nextInt();
                                 concesionarias.get(p).getVehiculos().add(b);
                                 vehiculos.add(b);
+
+                            }
+                        }
+                    }
+                }
+                case 2 -> {
+                    System.out.println(vehiculos.toString());
+                    System.out.println("Ingrese la posicion a modificar: ");
+                    int p = leer.nextInt();
+                    if (vehiculos.get(p) instanceof Carro) {
+                        System.out.println("1. Puertas 2. Motor 3. Velocidad");
+                        int esc = leer.nextInt();
+                        switch (esc) {
+                            case 1 -> {
+                                System.out.println("Ingrese la cantidad de puertas: ");
+                                int cantidadPuertas = leer.nextInt();
+                                ((Carro) vehiculos.get(p)).setCantidadPuertas(cantidadPuertas);
+                            }
+                            case 2 -> {
+                                System.out.println("Ingrese la descripcion del motor: ");
+                                String descripcionMotor = leer.nextLine();
+                                ((Carro) vehiculos.get(p)).setDescripcionMotor(descripcionMotor);
+                            }
+                            case 3 -> {
+                                System.out.println("Ingrese la velocidad maxima: ");
+                                int v = leer.nextInt();
+                                ((Carro) vehiculos.get(p)).setVelocidadMaxima(v);
+                            }
+                        }
+                    } else if (vehiculos.get(p) instanceof Camion) {
+                        System.out.println("1. Volumen 2. Altura 3. Retroexcavadora");
+                        int esc = leer.nextInt();
+                        switch (esc) {
+                            case 1 -> {
+                                System.out.println("Ingrese el nuevo volumen maximo: ");
+                                int volMax = leer.nextInt();
+                                ((Camion) vehiculos.get(p)).setVolumenMaximo(volMax);
+                            }
+                            case 2 -> {
+                                System.out.println("Ingrese la altura: ");
+                                double altura = leer.nextDouble();
+                                ((Camion) vehiculos.get(p)).setAltural(altura);
+                            }
+                            case 3 -> {
+                                System.out.println("Tiene retroexcavadora? 1 = si 2 = no");
+                                int w = leer.nextInt();
+                                if (w == 1) {
+                                    ((Camion) vehiculos.get(p)).setRetroexcavadora(true);
+                                } else if (w == 2) {
+                                    ((Camion) vehiculos.get(p)).setRetroexcavadora(false);
+                                }
+                            }
+                        }
+                    } else if (vehiculos.get(p) instanceof Bus) {
+                        System.out.println("Ingrese la cantidad de pasajeros: ");
+                        int pas = leer.nextInt();
+                        ((Bus)vehiculos.get(p)).setCantidadPasajeros(pas);
+                    }else if(vehiculos.get(p) instanceof Motocicleta){
+                        System.out.println("1. Desplasamiento del motor 2. Electrica ");
+                        int esc = leer.nextInt();
+                        switch(esc){
+                            case 1 ->{
+                                
+                            }
+                            case 2 ->{
                                 
                             }
                         }
                     }
                 }
-                case 2 ->{
-                    
+                case 3 -> {
+
                 }
-                case 3 ->{
-                    
+                case 4 -> {
+
                 }
-                case 4 ->{
-                    
             }
-            }
-        }while(check);
+        } while (check);
         return vehiculos;
     }
 
