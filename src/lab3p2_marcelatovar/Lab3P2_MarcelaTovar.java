@@ -331,16 +331,48 @@ public class Lab3P2_MarcelaTovar {
                     } else if (vehiculos.get(p) instanceof Bus) {
                         System.out.println("Ingrese la cantidad de pasajeros: ");
                         int pas = leer.nextInt();
-                        ((Bus)vehiculos.get(p)).setCantidadPasajeros(pas);
-                    }else if(vehiculos.get(p) instanceof Motocicleta){
+                        ((Bus) vehiculos.get(p)).setCantidadPasajeros(pas);
+                    } else if (vehiculos.get(p) instanceof Motocicleta) {
                         System.out.println("1. Desplasamiento del motor 2. Electrica ");
                         int esc = leer.nextInt();
-                        switch(esc){
-                            case 1 ->{
-                                
+                        switch (esc) {
+                            case 1 -> {
+                                System.out.println("Ingrese el desplasamiento de el motor: ");
+                                String d = leer.next();
+                                ((Motocicleta) vehiculos.get(p)).setDesplasamientoMotor(d);
                             }
-                            case 2 ->{
-                                
+                            case 2 -> {
+                                System.out.println("Es electrica? [S/N]");
+                                String f = leer.next();
+                                if (f.equalsIgnoreCase("S")) {
+                                    ((Motocicleta) vehiculos.get(p)).setElectrica(true);
+                                } else {
+                                    ((Motocicleta) vehiculos.get(p)).setElectrica(true);
+                                }
+                            }
+                        }
+                    } else if (vehiculos.get(p) instanceof Bicicleta) {
+                        System.out.println("1. Desplasamiento del motor 2. Electrica ");
+                        int esc = leer.nextInt();
+                        switch (esc) {
+                            case 1 -> {
+                                System.out.println("Ingrese la descripcion: ");
+                                String d = leer.nextLine();
+                                ((Bicicleta)vehiculos.get(p)).setDescripcion(d);
+                            }
+                            case 2 -> {
+                                System.out.println("Ingrese el radio de la rueda: ");
+                                int radio = leer.nextInt();
+                                ((Bicicleta)vehiculos.get(p)).setRadioRueda(radio);
+                            }
+                            case 3 -> {
+                                System.out.println("1. BMW 2. De Calle");
+                                int tipo = leer.nextInt();
+                                if (tipo == 1) {
+                                   ((Bicicleta)vehiculos.get(p)).setTipo("BMW");
+                                } else if (tipo == 2) {
+                                   ((Bicicleta)vehiculos.get(p)).setTipo("De Calle");
+                                }
                             }
                         }
                     }
