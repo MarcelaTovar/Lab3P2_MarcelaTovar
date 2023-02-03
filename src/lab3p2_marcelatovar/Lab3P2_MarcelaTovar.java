@@ -29,30 +29,30 @@ public class Lab3P2_MarcelaTovar {
                 case 2 -> {
                     if (concesionarias.isEmpty()) {
                         System.out.println("Ingrese primero las consecionarias");
-                    }else{
+                    } else {
                         Cliente(clientes);
                     }
-                    
+
                 }
                 case 3 -> {
                     if (concesionarias.isEmpty()) {
                         System.out.println("Ingrese primero las consecionarias");
-                    }else{
+                    } else {
                         vehiculos(vehiculos, concesionarias);
                     }
                 }
                 case 4 -> {
                     if (concesionarias.isEmpty()) {
                         System.out.println("Ingrese primero las consecionarias");
-                    }else{
+                    } else {
                         if (vehiculos.isEmpty()) {
                             System.out.println("Ingrese vehiculos primero");
-                        }else{
-                          VenderComprar(concesionarias,clientes);  
+                        } else {
+                            VenderComprar(concesionarias, clientes);
                         }
-                         
+
                     }
-                   
+
                 }
                 case 5 -> {
                     check = false;
@@ -64,7 +64,7 @@ public class Lab3P2_MarcelaTovar {
     public static ArrayList<Concesionaria> Concesionaria(ArrayList<Concesionaria> concesionarias) {
         boolean check = true;
         Scanner leer = new Scanner(System.in);
-        
+
         do {
             System.out.println("1. Agregar");
             System.out.println("2. Modificar");
@@ -121,7 +121,7 @@ public class Lab3P2_MarcelaTovar {
     public static ArrayList<Cliente> Cliente(ArrayList<Cliente> clientes) {
         boolean check = true;
         Scanner leer = new Scanner(System.in);
-        
+
         do {
             System.out.println("1. Agregar Cliente");
             System.out.println("2. Eliminar");
@@ -429,18 +429,21 @@ public class Lab3P2_MarcelaTovar {
                         int p = leer.nextInt();
                         System.out.println(concesionarias.get(p).getVehiculos().toString());
                         System.out.println("Ingrese la posicion de el vehiculo: ");
-                        
+                        int l = leer.nextInt();
                         System.out.println(clientes.toString());
                         System.out.println("Ingrese el cliente que va a comprar: ");
                         int c = leer.nextInt();
-
                         
-                        int l = leer.nextInt();
+                        if (concesionarias.get(p).getVehiculos().isEmpty()) {
+                            System.out.println("Compre vehiculos antes de vender.");
+                            check = false;
+                        }
+
                         if (clientes.get(c).getSaldo() > concesionarias.get(p).getVehiculos().get(l).getPrecio()) {
                             clientes.get(c).getVehiculos().add(concesionarias.get(p).getVehiculos().get(l));
                             concesionarias.get(p).getClientes().add(clientes.get(c));
-                            clientes.get(c).setSaldo((concesionarias.get(p).getVehiculos().get(l).getPrecio()-clientes.get(c).getSaldo())*0.075);
-                            concesionarias.get(p).setSaldo((int) (((int) (concesionarias.get(p).getSaldo()+clientes.get(c).getSaldo()))*0.075));
+                            clientes.get(c).setSaldo((concesionarias.get(p).getVehiculos().get(l).getPrecio() - clientes.get(c).getSaldo()) * 0.075);
+                            concesionarias.get(p).setSaldo((int) (((int) (concesionarias.get(p).getSaldo() + clientes.get(c).getSaldo())) * 0.075));
                         } else {
                             System.out.println("No tiene suficiente dinero");
                         }
@@ -454,7 +457,7 @@ public class Lab3P2_MarcelaTovar {
                         System.out.println(concesionarias.toString());
                         System.out.println("Ingrese la concesionaria: ");
                         int p = leer.nextInt();
-                        
+
                         System.out.println(clientes.toString());
                         System.out.println("Ingrese el cliente que va a comprar: ");
                         int c = leer.nextInt();
@@ -462,17 +465,22 @@ public class Lab3P2_MarcelaTovar {
                         System.out.println("Ingrese la posicion de el vehiculo: ");
                         int l = leer.nextInt();
                         
+                        if (clientes.get(c).getVehiculos().isEmpty()) {
+                            System.out.println("Compre vehiculos antes de vender.");
+                            check = false;
+                        }
+
                         if (concesionarias.get(p).getSaldo() > clientes.get(c).getVehiculos().get(l).getPrecio()) {
                             concesionarias.get(p).getVehiculos().add(clientes.get(c).getVehiculos().get(l));
-                            concesionarias.get(p).setSaldo((int) (concesionarias.get(p).getSaldo()-clientes.get(c).getVehiculos().get(l).getPrecio()));
-                            clientes.get(c).setSaldo(clientes.get(c).getSaldo()+concesionarias.get(p).getVehiculos().get(l).getPrecio());
+                            concesionarias.get(p).setSaldo((int) (concesionarias.get(p).getSaldo() - clientes.get(c).getVehiculos().get(l).getPrecio()));
+                            clientes.get(c).setSaldo(clientes.get(c).getSaldo() + concesionarias.get(p).getVehiculos().get(l).getPrecio());
                         } else {
                             System.out.println("No hay suficiente dinero");
                         }
                     }
 
                 }
-                case 3 ->{
+                case 3 -> {
                     check = false;
                 }
 
