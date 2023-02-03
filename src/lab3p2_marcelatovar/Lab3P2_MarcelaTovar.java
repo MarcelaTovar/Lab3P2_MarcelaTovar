@@ -27,12 +27,15 @@ public class Lab3P2_MarcelaTovar {
                     Concesionaria(concesionarias);
                 }
                 case 2 -> {
+                    Cliente(clientes);
+                }
+                case 3 -> {
 
                 }
                 case 4 -> {
-
+                    
                 }
-                case 5 -> {
+                case 5 ->{
                     check = false;
                 }
             }
@@ -91,6 +94,44 @@ public class Lab3P2_MarcelaTovar {
         } while (check);
         return concesionarias;
 
+    }
+    
+    public static ArrayList<Cliente> Cliente(ArrayList<Cliente> clientes){
+        boolean check = true;
+        Scanner leer = new Scanner(System.in);
+        Cliente c = new Cliente();
+        do{
+            System.out.println("1. Agregar Cliente"); 
+            System.out.println("2. Eliminar");
+            System.out.println("3. Salir");
+            int o = leer.nextInt();
+            switch(o){
+                case 1 ->{
+                    System.out.println("Ingrese el nombre: ");
+                    String nombre = leer.next();
+                    System.out.println("Ingrese el saldo: ");
+                    int saldo = leer.nextInt();
+                    c.setNombre(nombre);
+                    c.setSaldo(saldo);
+                    c.setIdUnico(clientes.size()+1);
+                    clientes.add(c);
+                }
+                case 2 ->{
+                    System.out.println(clientes.toString());
+                    System.out.println("Ingrese la pocision a eliminar: ");
+                    int p = leer.nextInt();
+                    clientes.remove(p);
+                }
+                case 3 ->{
+                    check = false;
+                }
+            }
+        }while(check);
+        return clientes;
+    }
+    
+    public static ArrayList<Vehiculo> vehiculos (ArrayList<Vehiculo> vehiculos){
+        return vehiculos;
     }
 
 }

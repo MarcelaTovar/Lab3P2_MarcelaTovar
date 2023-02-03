@@ -13,8 +13,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int idUnico, String nombre, double saldo) {
-        this.idUnico = idUnico;
+    public Cliente( String nombre, double saldo) {
         this.nombre = nombre;
         this.saldo = saldo;
     }
