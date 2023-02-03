@@ -241,10 +241,29 @@ public class Lab3P2_MarcelaTovar {
                                 cam.setPrecio(precio);
                                 cam.setCantidadLlantas(cantidadLlantas);
                                 System.out.println("Ingrese el nuevo volumen maximo: ");
-                                int volMax = 
+                                int volMax = leer.nextInt();
+                                cam.setVolumenMaximo(volMax);
+                                System.out.println("Ingrese la altura: ");
+                                double altura = leer.nextDouble();
+                                cam.setAltural(altura);
+                                System.out.println("Tiene retroexcavadora? 1 = si 2 = no");
+                                int w = leer.nextInt();
+                                if (w == 1) {
+                                    cam.setRetroexcavadora(true);
+                                }else if(w == 2){
+                                    cam.setRetroexcavadora(false);
+                                }
+                                System.out.println(concesionarias.toString());
+                                System.out.println("Ingrese la concesionaria que desea agregarla: ");
+                                int p = leer.nextInt();
+                                concesionarias.get(p).getVehiculos().add(cam);
+                                vehiculos.add(cam);
                                 
                             }
                             case 3 ->{
+                                Bus b = new Bus();
+                                System.out.println("Ingrese la cantidad de pasajeros: ");
+                                int pas = leer.nextInt();
                                 
                             }
                         }

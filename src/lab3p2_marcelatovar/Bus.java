@@ -6,6 +6,11 @@ public class Bus extends Vehiculo{
     private int cantidadPasajeros;
     private String tipo;
 
+    public Bus() {
+    }
+    
+    
+
     public Bus(int cantidadPasajeros, String color, String marca, String modelo, int anio, double precio, int cantidadLlantas) {
         super(color, marca, modelo, anio, precio, cantidadLlantas);
         this.cantidadPasajeros = cantidadPasajeros;
