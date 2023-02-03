@@ -20,7 +20,7 @@ public class Lab3P2_MarcelaTovar {
             System.out.println("2. CRUD Clientes");
             System.out.println("3. CRUD Vehiculos ");
             System.out.println("4. Compra/Venta");
-            System.out.println("6. Salir");
+            System.out.println("5. Salir");
             int op = leer.nextInt();
             switch (op) {
                 case 1 -> {
