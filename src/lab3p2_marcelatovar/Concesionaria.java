@@ -15,9 +15,8 @@ public class Concesionaria {
     public Concesionaria() {
     }
 
-    public Concesionaria(String nombreEmpresa, int idEmpresa, String direccion, int saldo) {
+    public Concesionaria(String nombreEmpresa, String direccion, int saldo) {
         this.nombreEmpresa = nombreEmpresa;
-        this.idEmpresa = idEmpresa;
         this.direccion = direccion;
         this.saldo = saldo;
     }
