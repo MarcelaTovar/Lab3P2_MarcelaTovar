@@ -262,8 +262,19 @@ public class Lab3P2_MarcelaTovar {
                             }
                             case 3 ->{
                                 Bus b = new Bus();
+                                b.setColor(color);
+                                b.setMarca(marca);
+                                b.setAnio(anio);
+                                b.setPrecio(precio);
+                                b.setCantidadLlantas(cantidadLlantas);
                                 System.out.println("Ingrese la cantidad de pasajeros: ");
                                 int pas = leer.nextInt();
+                                b.setCantidadPasajeros(pas);
+                                System.out.println(concesionarias.toString());
+                                System.out.println("Ingrese la concesionaria que desea agregarla: ");
+                                int p = leer.nextInt();
+                                concesionarias.get(p).getVehiculos().add(b);
+                                vehiculos.add(b);
                                 
                             }
                         }
