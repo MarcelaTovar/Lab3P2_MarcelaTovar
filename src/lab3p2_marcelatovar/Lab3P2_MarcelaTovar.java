@@ -442,8 +442,9 @@ public class Lab3P2_MarcelaTovar {
                         if (clientes.get(c).getSaldo() > concesionarias.get(p).getVehiculos().get(l).getPrecio()) {
                             clientes.get(c).getVehiculos().add(concesionarias.get(p).getVehiculos().get(l));
                             concesionarias.get(p).getClientes().add(clientes.get(c));
-                            clientes.get(c).setSaldo((concesionarias.get(p).getVehiculos().get(l).getPrecio() - clientes.get(c).getSaldo()) * 0.075);
+                            clientes.get(c).setSaldo((clientes.get(c).getSaldo())  - concesionarias.get(p).getVehiculos().get(l).getPrecio()* 0.075);
                             concesionarias.get(p).setSaldo((int) (((int) (concesionarias.get(p).getSaldo() + clientes.get(c).getSaldo())) * 0.075));
+                            
                         } else {
                             System.out.println("No tiene suficiente dinero");
                         }
