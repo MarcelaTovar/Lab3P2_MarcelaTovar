@@ -30,7 +30,7 @@ public class Lab3P2_MarcelaTovar {
                     Cliente(clientes);
                 }
                 case 3 -> {
-
+                    vehiculos(vehiculos,concesionarias);
                 }
                 case 4 -> {
                     
@@ -130,7 +130,97 @@ public class Lab3P2_MarcelaTovar {
         return clientes;
     }
     
-    public static ArrayList<Vehiculo> vehiculos (ArrayList<Vehiculo> vehiculos){
+    public static ArrayList<Vehiculo> vehiculos (ArrayList<Vehiculo> vehiculos, ArrayList<Concesionaria> concesionarias){
+        boolean check = true;
+        Scanner leer = new Scanner(System.in);
+        do{
+            System.out.println("1. Agregar vehiculo");
+            System.out.println("2. Modificar Vehiculo");
+            System.out.println("3. Eliminar Vehiculo");
+            System.out.println("4. Salir");
+            int op = leer.nextInt();
+            switch(op){
+                case 1 ->{
+                    System.out.println("Ingrese el color: ");
+                    String color = leer.next();
+                    System.out.println("Ingrese la marca: ");
+                    String marca = leer.next();
+                    System.out.println("Ingrese el anio: ");
+                    int anio = leer.nextInt();
+                    System.out.println("Ingrese el precio: ");
+                    double precio = leer.nextDouble();
+                    System.out.println("Ingrese la cantidad de llantas: ");
+                    int cantidadLlantas = leer.nextInt();
+                    if (cantidadLlantas == 2) {
+                        System.out.println("1. Motocicleta 2. Bicicleta");
+                        int o = leer.nextInt();
+                        switch(o){
+                            case 1 ->{
+                                Motocicleta moto = new Motocicleta();
+                                moto.setColor(color);
+                                moto.setMarca(marca);
+                                moto.setAnio(anio);
+                                moto.setPrecio(precio);
+                                moto.setCantidadLlantas(cantidadLlantas);
+                                System.out.println("Ingrese el desplasamiento de el motor: ");
+                                String d = leer.next();
+                                moto.setDesplasamientoMotor(color);
+                                System.out.println("Es electrica? [S/N]");
+                                String f = leer.next();
+                                if (f.equalsIgnoreCase("S")) {
+                                    moto.setElectrica(true);
+                                }else{
+                                    moto.setElectrica(false);
+                                }
+                                System.out.println(concesionarias.toString());
+                                System.out.println("Ingrese la concesionaria que desea agregarla: ");
+                                int p = leer.nextInt();
+                                concesionarias.get(p).getVehiculos().add(moto);
+                                vehiculos.add(moto);
+                            }
+                            case 2 ->{
+                                Bicicleta bici = new Bicicleta();
+                                bici.setColor(color);
+                                bici.setMarca(marca);
+                                bici.setAnio(anio);
+                                bici.setPrecio(precio);
+                                bici.setCantidadLlantas(cantidadLlantas);
+                                System.out.println("Ingrese la descripcion: ");
+                                String d = leer.nextLine();
+                                bici.setDescripcion(d);
+                                System.out.println("Ingrese el radio de la rueda: ");
+                                int radio = leer.nextInt();
+                                bici.setRadioRueda(radio);
+                                System.out.println("1. BMW 2. De Calle");
+                                int tipo = leer.nextInt();
+                                if (tipo == 1) {
+                                    bici.setTipo("BMW");
+                                }else if(tipo == 2){
+                                    bici.setTipo("De Calle");
+                                }
+                                System.out.println(concesionarias.toString());
+                                System.out.println("Ingrese la concesionaria que desea agregarla: ");
+                                int p = leer.nextInt();
+                                concesionarias.get(p).getVehiculos().add(bici);
+                                vehiculos.add(bici);
+
+                            }
+                        }
+                    }else if(cantidadLlantas == 4){
+                        System.out.println("1. Carro 2. Camion 3. Bus");
+                    }
+                }
+                case 2 ->{
+                    
+                }
+                case 3 ->{
+                    
+                }
+                case 4 ->{
+                    
+            }
+            }
+        }while(check);
         return vehiculos;
     }
 

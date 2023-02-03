@@ -5,6 +5,7 @@ package lab3p2_marcelatovar;
 public class Bicicleta extends Vehiculo{
     private String descripcion;
     private int radioRueda;
+    private String tipo;
 
     public Bicicleta() {
     }
@@ -30,6 +31,16 @@ public class Bicicleta extends Vehiculo{
     public void setRadioRueda(int radioRueda) {
         this.radioRueda = radioRueda;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
     @Override
     public String toString() {
