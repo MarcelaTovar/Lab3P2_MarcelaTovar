@@ -20,7 +20,7 @@ public class Lab3P2_MarcelaTovar {
             System.out.println("2. CRUD Clientes");
             System.out.println("3. CRUD Vehiculos ");
             System.out.println("4. Compra/Venta");
-            System.out.println("5. Salir");
+            System.out.println("6. Salir");
             int op = leer.nextInt();
             switch (op) {
                 case 1 -> {
@@ -73,6 +73,7 @@ public class Lab3P2_MarcelaTovar {
                     switch (o) {
                         case 1 -> {
                             System.out.println("Ingrese la direccion: ");
+                            leer.nextLine();
                             String direccion = leer.nextLine();
                             c.setDireccion(direccion);
 
@@ -401,22 +402,23 @@ public class Lab3P2_MarcelaTovar {
                     if (clientes.isEmpty()) {
                         System.out.println("No hay clientes para comprar");
                     } else {
+                        System.out.println(concesionarias.toString());
+                        System.out.println("Ingrese la concesionaria: ");
+                        int p = leer.nextInt();
+                        System.out.println(concesionarias.get(p).getVehiculos().toString());
+                        System.out.println("Ingrese la posicion de el vehiculo: ");
+                        
                         System.out.println(clientes.toString());
                         System.out.println("Ingrese el cliente que va a comprar: ");
                         int c = leer.nextInt();
 
-                        System.out.println(concesionarias.toString());
-                        System.out.println("Ingrese la concesionaria: ");
-                        int p = leer.nextInt();
-                        System.out.println(concesionarias.get(p).toString());
-                        System.out.println("Ingrese la posicion de el vehiculo: ");
+                        
                         int l = leer.nextInt();
                         if (clientes.get(c).getSaldo() > concesionarias.get(p).getVehiculos().get(l).getPrecio()) {
                             clientes.get(c).getVehiculos().add(concesionarias.get(p).getVehiculos().get(l));
                             concesionarias.get(p).getClientes().add(clientes.get(c));
                             clientes.get(c).setSaldo((concesionarias.get(p).getVehiculos().get(l).getPrecio()-clientes.get(c).getSaldo())*0.075);
                             concesionarias.get(p).setSaldo((int) (((int) (concesionarias.get(p).getSaldo()+clientes.get(c).getSaldo()))*0.075));
-                            concesionarias.remove(l);
                         } else {
                             System.out.println("No tiene suficiente dinero");
                         }
@@ -427,21 +429,21 @@ public class Lab3P2_MarcelaTovar {
                     if (clientes.isEmpty()) {
                         System.out.println("No hay clientes para vender");
                     } else {
-                        System.out.println(clientes.toString());
-                        System.out.println("Ingrese el cliente que va a comprar: ");
-                        int c = leer.nextInt();
-
                         System.out.println(concesionarias.toString());
                         System.out.println("Ingrese la concesionaria: ");
                         int p = leer.nextInt();
-                        System.out.println(clientes.get(c).toString());
+                        
+                        System.out.println(clientes.toString());
+                        System.out.println("Ingrese el cliente que va a comprar: ");
+                        int c = leer.nextInt();
+                        System.out.println(clientes.get(c).getVehiculos().toString());
                         System.out.println("Ingrese la posicion de el vehiculo: ");
                         int l = leer.nextInt();
+                        
                         if (concesionarias.get(p).getSaldo() > clientes.get(c).getVehiculos().get(l).getPrecio()) {
                             concesionarias.get(p).getVehiculos().add(clientes.get(c).getVehiculos().get(l));
                             concesionarias.get(p).setSaldo((int) (concesionarias.get(p).getSaldo()-clientes.get(c).getVehiculos().get(l).getPrecio()));
                             clientes.get(c).setSaldo(clientes.get(c).getSaldo()+concesionarias.get(p).getVehiculos().get(l).getPrecio());
-                            clientes.remove(l);
                         } else {
                             System.out.println("No hay suficiente dinero");
                         }
