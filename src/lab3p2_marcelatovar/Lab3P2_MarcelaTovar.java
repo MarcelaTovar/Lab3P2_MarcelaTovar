@@ -33,7 +33,7 @@ public class Lab3P2_MarcelaTovar {
                     vehiculos(vehiculos, concesionarias);
                 }
                 case 4 -> {
-
+                    VenderComprar(concesionarias,clientes);
                 }
                 case 5 -> {
                     check = false;
@@ -358,34 +358,103 @@ public class Lab3P2_MarcelaTovar {
                             case 1 -> {
                                 System.out.println("Ingrese la descripcion: ");
                                 String d = leer.nextLine();
-                                ((Bicicleta)vehiculos.get(p)).setDescripcion(d);
+                                ((Bicicleta) vehiculos.get(p)).setDescripcion(d);
                             }
                             case 2 -> {
                                 System.out.println("Ingrese el radio de la rueda: ");
                                 int radio = leer.nextInt();
-                                ((Bicicleta)vehiculos.get(p)).setRadioRueda(radio);
+                                ((Bicicleta) vehiculos.get(p)).setRadioRueda(radio);
                             }
                             case 3 -> {
                                 System.out.println("1. BMW 2. De Calle");
                                 int tipo = leer.nextInt();
                                 if (tipo == 1) {
-                                   ((Bicicleta)vehiculos.get(p)).setTipo("BMW");
+                                    ((Bicicleta) vehiculos.get(p)).setTipo("BMW");
                                 } else if (tipo == 2) {
-                                   ((Bicicleta)vehiculos.get(p)).setTipo("De Calle");
+                                    ((Bicicleta) vehiculos.get(p)).setTipo("De Calle");
                                 }
                             }
                         }
                     }
                 }
                 case 3 -> {
-
+                    System.out.println("Ingrese la posicion de el vehiculo a eliminar: ");
+                    int p = leer.nextInt();
+                    vehiculos.remove(p);
                 }
                 case 4 -> {
-
+                    check = false;
                 }
             }
         } while (check);
         return vehiculos;
     }
 
+    public static void VenderComprar(ArrayList<Concesionaria> concesionarias, ArrayList<Cliente> clientes) {
+        boolean check = true;
+        Scanner leer = new Scanner(System.in);
+        do {
+            System.out.println("1. Comprar 2. Vender 3. Salir");
+            int op = leer.nextInt();
+            switch (op) {
+                case 1 -> {
+                    if (clientes.isEmpty()) {
+                        System.out.println("No hay clientes para comprar");
+                    } else {
+                        System.out.println(clientes.toString());
+                        System.out.println("Ingrese el cliente que va a comprar: ");
+                        int c = leer.nextInt();
+
+                        System.out.println(concesionarias.toString());
+                        System.out.println("Ingrese la concesionaria: ");
+                        int p = leer.nextInt();
+                        System.out.println(concesionarias.get(p).toString());
+                        System.out.println("Ingrese la posicion de el vehiculo: ");
+                        int l = leer.nextInt();
+                        if (clientes.get(c).getSaldo() > concesionarias.get(p).getVehiculos().get(l).getPrecio()) {
+                            clientes.get(c).getVehiculos().add(concesionarias.get(p).getVehiculos().get(l));
+                            concesionarias.get(p).getClientes().add(clientes.get(c));
+                            clientes.get(c).setSaldo((concesionarias.get(p).getVehiculos().get(l).getPrecio()-clientes.get(c).getSaldo())*0.075);
+                            concesionarias.get(p).setSaldo((int) (((int) (concesionarias.get(p).getSaldo()+clientes.get(c).getSaldo()))*0.075));
+                            concesionarias.remove(l);
+                        } else {
+                            System.out.println("No tiene suficiente dinero");
+                        }
+                    }
+
+                }
+                case 2 -> {
+                    if (clientes.isEmpty()) {
+                        System.out.println("No hay clientes para vender");
+                    } else {
+                        System.out.println(clientes.toString());
+                        System.out.println("Ingrese el cliente que va a comprar: ");
+                        int c = leer.nextInt();
+
+                        System.out.println(concesionarias.toString());
+                        System.out.println("Ingrese la concesionaria: ");
+                        int p = leer.nextInt();
+                        System.out.println(clientes.get(c).toString());
+                        System.out.println("Ingrese la posicion de el vehiculo: ");
+                        int l = leer.nextInt();
+                        if (concesionarias.get(p).getSaldo() > clientes.get(c).getVehiculos().get(l).getPrecio()) {
+                            concesionarias.get(p).getVehiculos().add(clientes.get(c).getVehiculos().get(l));
+                            concesionarias.get(p).setSaldo((int) (concesionarias.get(p).getSaldo()-clientes.get(c).getVehiculos().get(l).getPrecio()));
+                            clientes.get(c).setSaldo(clientes.get(c).getSaldo()+concesionarias.get(p).getVehiculos().get(l).getPrecio());
+                            clientes.remove(l);
+                        } else {
+                            System.out.println("No hay suficiente dinero");
+                        }
+                    }
+
+                }
+                case 3 ->{
+                    check = false;
+                }
+
+            }
+
+        } while (check);
+
+    }
 }
